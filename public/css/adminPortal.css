@@ -220,7 +220,7 @@ header .image-text .header-text{
     font-weight: 400;
     color:var(--text-color);
   }
-  .custom-dropdown select{
+  .custom-dropdown select , input{
     padding: 10px;
     font-size: 17px;
     width: 100%;

@@ -22,10 +22,10 @@ async function handleLogin(){
       let userDetails = {
         password: pass
       };
-      const response = await fetch(`/api/admin_auth`, {
+      const response = await fetch(`/api/admin/login`, {
         method: "POST",
         headers: {
-          'content-type': 'application/json',
+          'content-type': 'application/json'
         },
         body: JSON.stringify(userDetails)
       });
