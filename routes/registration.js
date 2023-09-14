@@ -4,9 +4,10 @@ const User = require('../models/User');
 const Sport = require('../models/Sport');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const passport=require('passport');
 
 const jwtSecret = process.env.JWT_SECRET;
-
+const passportSetup=require('../GoogleOauth/config/passport');
 // check login middleware
 
 const awtMiddleware = (req,res,next)=>{
@@ -135,6 +136,18 @@ router.post('/login', async (req, res) => {
     }
   
   });
+  router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile','email'] }));
+
+router.get('/auth/google/redirect',passport.authenticate('google'),(req, res)=>{
+    // console.log(req.route['path']);
+    //console.log(req.user['username']);
+    const token = jwt.sign({ userId: req.user['username'] },jwtSecret)
+    res.cookie('token', token, {httpOnly: true});
+    res.redirect('/dashboard');
+    // res.redirect('/dashboard/');
+  }
+);
 
   router.get('/dashboard',awtMiddleware,(req,res)=>{
     res.render('registration/registration_index')
