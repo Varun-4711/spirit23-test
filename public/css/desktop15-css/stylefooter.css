@@ -1,0 +1,99 @@
+.footer {
+    background-color: #cfff69;
+    height: 310px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px;
+    /* margin-top: auto; */
+    /* margin-bottom: 0; */
+  }
+  #foot_1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 2vw;
+  }
+  .foot-text {
+    margin: 2vw;
+  }
+  
+  .apps img {
+    margin: 0 15px;
+  }
+  .qlinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-style: italic;
+    padding-bottom: 22px;
+  }
+  .qlinks label {
+    font-size: 19px;
+    font-weight: 100;
+  }
+  .qlinks .ql li {
+    list-style-type: none;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 5px 0;
+  }
+  .ql a {
+    text-decoration: none;
+    color: #000000;
+  }
+  .con {
+    padding: 51px 0;
+    font-size: 19px;
+    font-style: italic;
+  }
+  .con a {
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .year {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .year h1,
+    .year span {
+      font-size: 18px;
+    }
+    .footer {
+      flex-direction: column;
+      padding: 20px;
+      height: auto;
+    }
+    .qlinks {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .qlinks label {
+      font-size: 16px;
+    }
+  
+    .qlinks .ql li {
+      font-size: 18px;
+      padding: 5px 0;
+    }
+    .con {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+    .apps img {
+      margin: 0 10px;
+    }
+  }
+  .cross {
+    display: flex;
+    gap: 1vw;
+  }
+  .crossi {
+    margin-top: 10vw;
+    height: 3vw;
+    width: 3vw;
+    z-index: 1;
+  }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/adminLogin.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="login-card">
+    <h1>Admin</h1>
+    <input type="text" id="password" placeholder="******" >
+    <button onclick="handleLogin()">Login</button>
+  </div>
+</body>
+<script>
+async function handleLogin(){
+      const pass = password.value;
+      // console.log(username);
+      console.log(pass);
+      let userDetails = {
+        password: pass
+      };
+      const response = await fetch(`/api/admin_auth`, {
+        method: "POST",
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(userDetails)
+      });
+      const res = await response.json();
+      if (res.status) {
+        window.location.reload();
+          }
+      else {
+        alert(res.msg);
+      }
+}
+</script>
+</html>

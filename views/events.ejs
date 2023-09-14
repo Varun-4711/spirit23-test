@@ -1,0 +1,276 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/events-css/locomotivescroll.css">
+       <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/events-css/indexnew.css">
+        <link rel="stylesheet" href="../css/events-css/menu.css">
+        <title>Spirit 2023</title>
+        <!-- <link rel="stylesheet" href="stylefooter.css">   -->
+       <link rel="stylesheet" href="../css/events-css/header.css">
+       <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+       <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+       <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+       <link rel="manifest" href="../favicon_io/site.webmanifest">
+    </head>
+    <body>
+        <header class="header1">
+            <div class="year">
+                <a href="/"><img class="logo" src="../images/events-imgs/Spirit vector.png" alt="spirit logo" height="31.25px">
+                <img class="spir" src="../images/events-imgs/Union.png" alt="spiritname" height="32.3px"></a>
+                <!-- <h1>SPIRIT</h1>
+                <span>2023</span> -->
+            </div>
+            <nav class="navbar1">
+                <div class="hamburger1" id="hamburger1">
+                    <div class="bar1"></div>
+                    <div class="bar1"></div>
+                    <div class="bar1"></div>
+                  </div>
+                <ul class="hlinks" id="hlinks">
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="#">Sponsors</a></li>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="#">Rulebook</a></li>
+                    <li>
+                        <!-- <li><a href="#">CA Programme</a></li> -->
+                        <button class="but" onclick="location.href='/register'" style="cursor: pointer;">Register</button>
+                    </li>
+                </ul>
+            </nav> 
+
+ </header>
+
+
+
+        <!-- Events Page -->
+    <div id="main">
+        <div class="header two">
+            <div>Competitions</div>
+            <div>Pronites</div>
+        </div>
+        <div class="body eventpage">
+            
+            <div class="sports">
+                <div class="input">
+                  <input id="input" type="text" placeholder="Search">
+                </div>
+                <div class="list">
+                <div onclick = "find2(this.className)" class="athletics" id="athletics">
+                        <img src="../images/events-imgs/Untitled/Vector.png" class="image_athletics" id="image">
+                        Athletics
+                      
+                    </div>
+                <div class="badminton" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/Vector-2.png" class="image_badminton" id="image">
+                        Badminton
+                    </div>
+                <div class="basketball" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/mdi_basketball.png" class="image_basketball" id="image">
+                        Basketball
+                    </div>
+                <div class="chess" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/fa6-regular_chess-pawn.png" class="image_chess" id="image">
+                        Chess
+                    </div>
+               <div class="cricket" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/material-symbols_sports-cricket-outline.png" class="image_cricket" id="image">
+                        Cricket
+                    </div>
+                <div class="football" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/ion_football.png" class="image_football" id="image">
+                        Football
+                    </div>
+               <div class="hockey" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/fluent-emoji-high-contrast_field-hockey.png" class="image_hockey" id="image">
+                        Hockey
+                    </div>
+                <div class="khokho" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/mdi_kho-kho.png" class="image_kho" id="image">
+                        Kho Kho
+                    </div>
+                <div class="squash" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/mdi_squash.png" class="image_squash" id="image">
+                        Squash
+                    </div>
+                <div class="tabletennis" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/maki_table-tennis.png" class="image_tabletennis" id="image">
+                        Table Tennis
+                    </div>
+                <div class="tennis" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/solar_tennis-bold.png" class="image_tennis" id="image">
+                        Tennis
+                    </div>
+                <div class="volleyball" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/mdi_volleyball.png" class="image_volleyball" id="image">
+                        Volleyball
+                    </div>
+                <div class="Weightlifting" onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/cil_weightlifitng.png" class="image_weightlifting" id="image">
+                        Weightlifting
+                    </div>
+                <div class="yoga"onclick = "find2(this.className)">
+                        <img src="../images/events-imgs/Untitled/grommet-icons_yoga.png" class="image" id="image">
+                        Yoga
+                    </div>
+                </div>
+            </div>
+        <!-- at mobile view -->
+        <div class="barnav">
+            <div class="search-container">
+                <input type="text" class="search-input" id = "input1" placeholder="Search...">
+                <button class="search-button">Search</button>
+              </div>
+              <div class="menu-wrap">
+                <input type="checkbox" class="toggler" id="togglerId">
+
+                <div class="hamburger">
+                    <div></div>
+                </div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li class="athletics" onclick = "find2(this.className)"><a href="#">Athletics</a></li>
+                                <li class="badminton" onclick = "find2(this.className)" ><a href="#">Badminton</a></li>
+                                <li class="basketball" onclick = "find2(this.className)"><a href="#">Basketball</a></li>
+                                <li class="chess" onclick = "find2(this.className)"><a href="#">Chess</a></li>
+                                 <li class="cricket" onclick = "find2(this.className)"><a href="#">Cricket</a></li>
+                                  <li class="football" onclick = "find2(this.className)"><a href="#">Football</a></li> 
+                                  <li class="hockey" onclick = "find2(this.className)"><a href="#">Hockey</a></li>
+                                  <li class="khokho" onclick = "find2(this.className)"><a href="#">Kho-Kho</Kho-Kho></a></li>
+                                  <li class="squash" onclick = "find2(this.className)"><a href="#">Squash</a></li>
+                                  <li class="tabletennis" onclick = "find2(this.className)"><a href="#">Table Tennis</a></li>
+                                  <li class="volleyball" onclick = "find2(this.className)"><a href="#">Volleyball</a></li>
+                                  <li class="Weightlifting" onclick = "find2(this.className)"><a href="#">Weightlifting</a></li>
+                                  <li class="yoga" onclick = "find2(this.className)"><a href="#">Yoga</a></li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>             
+            </div>
+              
+            <div class="sportinfo">
+                <div class="sportname">Basketball</div>
+                <div class="maincard">
+                        <div class="card1 card-men">
+                            <div class="img"><img src="../images/events-imgs/bmobile2.jpeg" alt="Basketball" class="sportsimg"></div>
+                            <div class="lowbox">
+                            <div class="name">
+                                <h1>Basketball (Men's)</h1>
+                            </div>
+                            <div>
+                                <p class="Date">3 November 2023</p>
+                            </div>
+                            <div class="Des1">
+                                <p>Team sport</p>
+                            </div>
+                            <div class="Des2">
+                                <p>Number of Team Member:12</p>
+                            </div>
+                            <div class="las">
+                                <div class="learn">
+                                    <h3><a href="/desktop15">Learn More</a></h3>
+                                </div>
+                                <div class="regi">
+                                    <h2><a id ="register" href="/register">Register&rarr;</a></h2>
+                                </div>
+                            </div>
+                           </div>
+                        </div>
+                        <div class="card1 card-women">
+                            <div class="img"><img src="../images/events-imgs/bmobile2.jpeg" alt="Basketball" class="sportsimg"></div>
+                            <div class="lowbox">
+                            <div class="name">
+                                <h1>Basketball (Women's)</h1>
+                            </div>
+                            <div>
+                                <p class="Date">3 November 2023</p>
+                            </div>
+                            <div class="Des1">
+                                <p>Team sport</p>
+                            </div>
+                            <div class="Des2">
+                                <p>Number of Team Member:12</p>
+                            </div>
+                            <div class="las">
+        
+                                <div class="learn">
+                                    <h3><a href="/desktop15">Learn More</a></h3>
+                                </div>
+                                <div class="regi">
+                                    <h2><a id="registerfe" href="/register">Register&rarr;</a></h2>
+                                </div>
+                            </div>
+                           </div>
+                        </div>
+                 </div>
+                 <!-- mchhj -->
+                 <div class="scoreboard">
+                    <div class="span">
+                          <h1>LIVE SCOREBOARD</h1>
+                     </div>
+                     <div class="bars bars-men">
+                        <div class="sportnameLEAD">BasketBall(Mens)</div>
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                     </div>
+                     <div class="sportnameLEAD">BasketBall(Womens)</div>
+                     <div class="bars bars-women">
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                         <a href="" class="rectangle">IIT Guwahati</a>
+                     </div>
+                 </div>
+                </div>
+            </div>
+        </div>
+        
+    <!-- Importing footer from Landing Page -->
+
+    <footer class="footer">
+            
+        <div id="foot_1">
+            <div>
+                <img src="../images/events-imgs/Frame 120.png" alt="spirit.">
+            </div>
+            <div class="foot-text">
+                Copyright &copy; 2023 Spirit, Sports Board, IIT Guwahati: <br>
+                All rights reserved
+            </div>
+            <div class="apps">
+                <a href="https://www.instagram.com/spirit_iitguwahati/?hl=en" target="_blank"><img src="../images/events-imgs/Vector.png" alt="insta"></a>
+                <a href="https://www.facebook.com/spiritiitg/"  target="_blank"><img src="../images/events-imgs/vectorf.png.png" alt="fb"></a>
+                <a href="https://youtube.com/@spiritiitguwahati2541?feature=shared" target="_blank"><img src="../images/events-imgs/Vectory.png" alt="youtube"></a>
+            </div>
+        </div>
+        <div class="qlinks">
+            <label for="ql"><h1>Quick Links</h1></label>
+            <ul class="ql" id="ql">
+                <li><a href="/index">Home</a></li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/about-us">About Us</a></li>
+            </ul>
+        </div>
+        <div class="con">
+            <a href="#"><h1>Contact</h1></a>
+        </div>
+    </footer>
+
+    <!-- Script Tags -->
+        <script src=" https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <!-- <script>
+        const scroll = new LocomotiveScroll({
+      el: document.querySelector('#main'),
+      smooth: true
+      });
+    </script> -->
+    <script src="../js/events-js/index.js"></script>
+    <script src="../js/events-js/header.js"></script>
+    </body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <!-- <link rel="stylesheet" href="registration_css.css"> -->
+    <script src="https://kit.fontawesome.com/877fc73fb5.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+.flex
+{
+    display: flex;
+    gap:1vw;
+}
+.ki
+{
+    display: flex;
+    gap:1vw;
+}
+body{
+    display: flex;
+    font-family: "Roboto", sans-serif;
+}
+#myDropdown{
+    width: 20.6rem;
+    height: 2.5rem;
+    border: solid white ;
+    margin-bottom: 1.5rem;
+}
+.hemlo{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    margin: auto;
+    
+    
+}
+label{
+    font-size: 1.2rem;
+    font-family: sans-serif;
+}
+.form_input{
+    width: 20rem;
+    height: 2rem;
+    margin-bottom: 1.5rem;
+    border: solid white ;
+}
+.form_radio{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius:0 ;
+    border: solid white ;
+}
+a{
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+.submitButton 
+{
+    display: none;
+    background-color: #141414;
+    color: white;
+    margin:auto;
+    margin-top: 2rem;
+    padding: 1rem 6rem 1rem 6rem;
+}
+
+.green-thing{
+    background-color: hsl(79, 100%, 71%);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    padding-left: 5rem;
+    width: 25rem;
+    flex-direction: column;
+}
+.hello{
+    width:10rem ;
+}
+option{
+    font-size: 1rem;
+    width: auto;
+    height: 3rem;
+}
+.del{
+    height: 2.2rem;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: solid transparent;
+    cursor: pointer;
+}
+.del:hover{
+    color: gray;
+}
+.addMember{
+width: fit-content;
+margin: auto;
+background-color: transparent;
+font-family: "Roboto", sans-serif;
+border: transparent;
+font-size: 2rem;
+border-radius: 100%;
+cursor: pointer;
+}
+.addMember:hover{
+    color: gray;
+}
+.lines{
+    height: 0.2rem;
+    width: 15rem;
+    margin: auto;
+    display: flex;
+    flex-basis: 1;
+    flex-grow: 1;
+    gap: 0.4rem;
+}
+.line1{
+    background-color: #141414;
+    height: 0.2rem;
+    width: 5rem;
+}
+.line2{
+    background-color: #141414;
+    width: 5rem;
+}
+.line3{
+    background-color: #ABABAb;
+    width: 5rem;
+}
+.spiritlogo123{
+    width: 8vw;
+    box-shadow: 10px 10px 10px grey;
+}
+/* University */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+    margin-left: -10px;
+    width: 20vw;
+    height: 3.5vw;
+  }
+  
+  #search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  #university-list {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #ccc;
+    display: none;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: white;
+  }
+  
+  #university-list li {
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  .logo_logout a{
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+  }
+
+
+</style>
+<body>
+    <div class="logo_logout">
+        <img src="images\spirit.jpeg" class="spiritlogo123"  alt="">
+        <a href="/logout" style="position: absolute;right: 2vw;top: 2vw;background-color: black;padding: 10px;color: hsl(79, 100%, 71%);">Logout</a>
+    </div>
+    <br>
+    <br>
+    <div class="hemlo">
+        <h1><br></h1>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose a sport and enter the details of team members</p>
+    <form action="/dashboard" method="POST">
+    <div class="green-thing">
+        <label for="myDropdown">Name of Sport*</label>
+    <select id="myDropdown" required name="sports">
+        <option value="">Select an option</option>
+        <option value="Football-Male" >Football Male</option>
+        <option value="Cricket-Male">Cricket Male</option>
+        <option value="Badmiton">Badmiton</option>
+        <option value="Volleyball">Volleyball</option>
+        <option value="Basketball">Basketball</option>
+        <option value="Hockey">Hockey</option>
+        <option value="Chess-Male">Chess Male</option>
+        <option value="Khokho">Khokho</option>
+        <option value="Table-Tennis">Table Tennis</option>
+        <option value="Lawn-Tennis">Lawn Tennis</option>
+        <option value="Yoga-Male">Yoga Male</option>
+        <option value="Carom-Male">Carom Male</option>
+        <option value="Squash-Male">Squash Male</option>
+        <option value="Weightlifting-Male-Upto-56Kg">Weightlifting Male Upto 56Kg</option>
+        <option value="Weightlifting-Male-Upto-62Kg">Weightlifting Male Upto 62Kg</option>
+        <option value="Weightlifting-Male-Upto-69Kg">Weightlifting Male Upto 69Kg</option>
+        <option value="Weightlifting-Male-Upto-77Kg">Weightlifting Male Upto 77Kg</option>
+        <option value="Weightlifting-Male-Over-77Kg">Weightlifting Male Over 77Kg</option>
+        <option value="Athletics">Athletics</option>
+        <!-- <option value="option20">Athletics 200m</option>
+        <option value="option21">Athletics 400m</option> -->
+        <option value="Athletics-Relay">Athletics Relay</option> 
+        <option value="Swimming-Freestyle">Swimming Freestyle</option>
+        <option value="Swimming-Breaststroke">Swimming Breaststroke</option>
+        <option value="Swimming-Backstroke">Swimming Backstroke</option>
+        <option value="Swimming-Butterfly">Swimming Butterfly</option>
+        <option value="Swimming-Male-Individual-Medley">Swimming Male Individual Medley</option> 
+        <option value="Swimming-Relay">Swimming Relay</option> 
+      </select>
+      <div class="mainDiv">
+            <label for="">Enter Captain's Name*</label><br>
+            <input type="text" class="form_input" name="captainname" placeholder="Enter Captain's name" required><br>
+            <label for="">Enter Captain's Email*</label><br>
+            <input type="email" class="form_input" name="captainemail" placeholder="Enter Captain's email" required>
+            <br>
+            <label for="">Primary contact No.*</label><br>
+            <input type="number" class="form_input" name="primarycontactno" placeholder="Primary contact No." required> 
+            <br>
+            <label for="">Secondary contact No.*</label><br>
+            <input type="number" class="form_input" name="secondarycontactno" placeholder="Secondary contact No." required>
+            <br>
+            <label for="">University Name*</label>
+            <div class="search-container">
+                <input type="text" class="form_input" id="search-input" placeholder="Search for universities..." name="university" required>
+                <ul id="university-list"></ul>
+                <!-- <button id="submit-button">Submit</button> -->
+            </div>
+            <form>
+                <div class="radio">
+                <label>
+                    <input type="radio" class="form_radio" name="gender" value="male" id="maleRadio">
+                    Male
+                </label>
+                <label>
+                    <input type="radio" class="form_radio" name="gender" value="female" id="femaleRadio">
+                    Female
+                </label>
+            </div>
+            </form>
+        </div>
+        <button type="button" class="addMember">Add members  <i class="fa-solid fa-user-plus"></i></button>
+        <br>
+        <!-- <div class="lines">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div> -->
+      <!-- <a href="registration\indec.ejs" class="submitButton">Submit</a> -->
+      <button type="submit" class="submitButton">submit</button>
+      <!-- <input type="submit"class="submitButton" value="submit" > -->
+    </div>
+</div>
+</form>
+</div>
+    <script src="js/registration_logic.js"></script>
+    <script>
+        const searchInput = document.getElementById('search-input');
+const universityList = document.getElementById('university-list');
+const submitButton = document.getElementById('submit-button');
+
+const apiEndpoint = 'http://universities.hipolabs.com/search?country=india';
+
+let lastTimeout; // For delaying search input processing
+
+// Function to fetch and populate the universities
+async function fetchUniversities(searchTerm) {
+    try {
+        const response = await fetch(`${apiEndpoint}&name=${searchTerm}`);
+        const data = await response.json();
+        
+        universityList.innerHTML = '';
+        
+        if (data.length > 0) {
+            data.forEach(university => {
+                const listItem = document.createElement('li');
+                listItem.textContent = university.name;
+                listItem.addEventListener('click', () => {
+                    searchInput.value = university.name;
+                    universityList.style.display = 'none'; // Close the recommendation box
+                });
+                universityList.appendChild(listItem);
+            });
+
+            universityList.style.display = 'block'; // Show the recommendation box
+        } else {
+            universityList.style.display = 'none'; // Hide the recommendation box
+        }
+    } catch (error) {
+        console.error('Error fetching universities:', error);
+    }
+}
+
+searchInput.addEventListener('input', (event) => {
+    const searchTerm = event.target.value.trim();
+    
+    // Clear any previous timeouts to avoid unnecessary API calls
+    clearTimeout(lastTimeout);
+
+    // Delay processing to improve performance and avoid excessive API calls
+    lastTimeout = setTimeout(() => {
+        if (searchTerm === '') {
+            universityList.style.display = 'none'; // Close the recommendation box
+        } else {
+            fetchUniversities(searchTerm);
+        }
+    }, 300); // Delay for 300ms
+});
+
+submitButton.addEventListener('click', () => {
+    const selectedUniversity = searchInput.value.trim();
+    if (selectedUniversity !== '') {
+        // You can perform further actions with the selectedUniversity value here
+        console.log('Selected University:', selectedUniversity);
+        
+        // Clear the search input
+        searchInput.value = '';
+    }
+});
+    </script>
+</body>
+</html>

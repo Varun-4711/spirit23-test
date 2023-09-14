@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Search</title>
+    <link rel="stylesheet" href="styliz.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 50vw;
+  }
+  
+  #search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  #university-list {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #ccc;
+    display: none;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  #university-list li {
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  
+</style>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for universities...">
+        <ul id="university-list"></ul>
+        <button id="submit-button">Submit</button>
+    </div>
+    <!-- <script src="scrizz.js"></script> -->
+    <script>
+        const searchInput = document.getElementById('search-input');
+const universityList = document.getElementById('university-list');
+const submitButton = document.getElementById('submit-button');
+
+const apiEndpoint = 'http://universities.hipolabs.com/search?country=india';
+
+let lastTimeout; // For delaying search input processing
+
+// Function to fetch and populate the universities
+async function fetchUniversities(searchTerm) {
+    try {
+        const response = await fetch(`${apiEndpoint}&name=${searchTerm}`);
+        const data = await response.json();
+        
+        universityList.innerHTML = '';
+        
+        if (data.length > 0) {
+            data.forEach(university => {
+                const listItem = document.createElement('li');
+                listItem.textContent = university.name;
+                listItem.addEventListener('click', () => {
+                    searchInput.value = university.name;
+                    universityList.style.display = 'none'; // Close the recommendation box
+                });
+                universityList.appendChild(listItem);
+            });
+
+            universityList.style.display = 'block'; // Show the recommendation box
+        } else {
+            universityList.style.display = 'none'; // Hide the recommendation box
+        }
+    } catch (error) {
+        console.error('Error fetching universities:', error);
+    }
+}
+
+searchInput.addEventListener('input', (event) => {
+    const searchTerm = event.target.value.trim();
+    
+    // Clear any previous timeouts to avoid unnecessary API calls
+    clearTimeout(lastTimeout);
+
+    // Delay processing to improve performance and avoid excessive API calls
+    lastTimeout = setTimeout(() => {
+        if (searchTerm === '') {
+            universityList.style.display = 'none'; // Close the recommendation box
+        } else {
+            fetchUniversities(searchTerm);
+        }
+    }, 300); // Delay for 300ms
+});
+
+submitButton.addEventListener('click', () => {
+    const selectedUniversity = searchInput.value.trim();
+    if (selectedUniversity !== '') {
+        // You can perform further actions with the selectedUniversity value here
+        console.log('Selected University:', selectedUniversity);
+        
+        // Clear the search input
+        searchInput.value = '';
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,576 @@
+/*prem*/
+* {
+  margin: 0;
+  padding: 0;
+}
+.header1 {
+  background-color: #141414;
+  border-bottom: #cfff69 solid 1px;
+  display: flex;
+  justify-content: space-between;
+  height: 7.75vw;
+  padding-top: 1.2vw;
+  z-index: 2;
+  /* position: fixed; */
+  width: 100%;
+}
+/* .spir {
+  height: 4vw;
+} */
+.year {
+  display: flex;
+  width: 45vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.year h1 {
+  font-size: 50px;
+  font-style: italic;
+  font-weight: 700;
+}
+.year span {
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 400;
+}
+.hlinks {
+  display: flex;
+  width: 60vw;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  gap: 0 px;
+  margin-right: 5vw;
+}
+.hlinks li {
+  list-style-type: none;
+  color: #cfff69;
+  font-size: 1.5vw;
+  font-style: italic;
+  font-weight: 400;
+  width: auto;
+}
+.hlinks a {
+  text-decoration: none;
+  color: #cfff69;
+}
+.but {
+  background-color: #cfff69;
+  font-size: 1.5vw;
+  font-style: italic;
+  font-weight: 400;
+  font-family: "Times New Roman", Times, serif;
+  width: 10vw;
+  padding: 5px 0;
+}
+
+.blank {
+  height: 800px;
+  background-color: #141414;
+}
+
+/* header ends */
+
+.footer {
+  background-color: #cfff69;
+  height: 410px;
+  display: flex;
+  justify-content: space-around;
+  padding: 50px;
+}
+#foot_1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.apps img {
+  margin: 0 15px;
+}
+.qlinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-style: italic;
+  padding-bottom: 22px;
+}
+.qlinks label {
+  font-size: 19px;
+  font-weight: 100;
+}
+.qlinks .ql li {
+  list-style-type: none;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 5px 0;
+}
+.ql a {
+  text-decoration: none;
+  color: #000000;
+}
+.con {
+  padding: 51px 0;
+  font-size: 19px;
+  font-style: italic;
+}
+.con a {
+  text-decoration: none;
+  color: #000000;
+}
+@media screen and (min-width: 1300px) {
+  .hlinks li {
+    font-size: 20px;
+  }
+  .but {
+    font-size: 20px;
+  }
+}
+/* Your existing CSS code here */
+
+.navbar1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #141414;
+  color: #fff;
+  width: 50vw;
+  
+}
+@media screen and (max-width: 980px){
+  .navbar1{
+    width: 10vw;
+    
+  }
+}
+.hamburger1 {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar1 {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 3px 0;
+}
+
+.hlinks {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.hlinks li a {
+  text-decoration: none;
+  /*color: #fff;*/
+}
+
+@media (max-width: 980px) {
+  .header{
+    height: 69px;
+  }
+  .hamburger1 {
+    display: flex;
+  }
+  #hlinks{
+    height:250px;
+    margin-top: 11px;
+  }
+  #hlinks li{
+    height:30px;
+    font-size:15px;
+  }
+  
+  .hlinks {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    background-color: #333;
+    width: 100%;
+    top: 60px;
+    left: 0;
+    padding: 20px 0;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%);
+  }
+
+  .hlinks.active {
+    display: flex;
+    transform: translateY(0);
+  }
+  .navbar{
+    width: 40px;
+  }
+}
+@media (max-width:830px) {
+  .footer{
+    padding: 50px 10px;
+  }
+  .con{
+    font-size: 2vw;
+    padding-right: 10px;
+  }
+  .qlinks h1{
+    font-size: 4.5vw;
+    padding-right: 20px;
+  }
+  .qlinks a{
+    font-size: 2.5vw;
+  }
+  .frame_spir{
+    width: 35vw;
+  }
+  #foot_1{
+    justify-content: space-evenly;
+  }
+  .Copyright{
+    padding-right: 30px;
+    font-size: 2vw;
+  }
+
+}
+@media (max-width:470px) {
+  .year{
+    width: 60vw;
+  }
+}
+@media (max-width:670px) {
+  .footer{
+    height: 60vw;
+  }
+  .con{
+    padding-top: 5vw;
+  }
+}
+@media (max-width:560px) {
+   .footer{
+    height: 335px;
+  } 
+  .con{
+    font-size: 2vw;
+  }
+}
+@media (max-width:400px) {
+  /* .footer{
+    flex-direction: column;
+  } */
+  .con{
+    padding-top: 8vw;
+  }
+
+  .apps img{
+    height: 16px;
+    margin: 0 2px;
+  }
+}
+/* @media (max-width:440px) {
+  .con{
+    font-size: 1.75vw;
+  }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+.header{
+    background-color: #141414;
+    /* color: #CFFF69; */
+    /*border-bottom: #CFFF69 solid 1px;
+    display: flex;
+    justify-content:space-between;
+    height: 120px;
+    padding-top: 15px;
+    /*position: sticky;
+    z-index: 1;*/
+/*}
+
+.year{
+    display: flex;
+    width: 45vw;  
+    justify-content: center;
+    /*padding: 10px 0;*/
+    /*align-items: center;
+}
+
+.year h1{
+    font-size: 50px;
+    font-style: italic;
+    font-weight: 700;
+} 
+.year span{
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 400;
+}
+.hlinks{
+    display: flex;
+    width: 60vw;  
+    justify-content:space-between;
+    align-items: center;
+    padding: 0;
+    gap: 0 px;
+    margin-right: 5vw;
+}
+.hlinks li{
+    list-style-type: none;
+    color: #CFFF69;
+    font-size: 1.5vw;
+    font-style: italic;
+    font-weight: 400;
+    width: auto;
+}
+.hlinks a{
+    text-decoration: none;
+    color: #CFFF69;
+    
+}
+.but{
+    background-color: #CFFF69;
+    font-size: 1.5vw;
+    font-style: italic;
+    font-weight: 400;
+    font-family: 'Times New Roman', Times, serif;
+    width: 10vw;
+    padding: 5px 0;
+}
+
+.blank{
+    height: 400px;
+    background-color: #141414;
+}
+  
+
+/* header ends */
+
+/*.footer{
+    background-color: #CFFF69;
+    height: 410px;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+
+}
+#foot_1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.apps img{
+    margin: 0 15px;
+}
+.qlinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-style: italic;
+    padding-bottom: 22px;
+}
+.qlinks label{
+    font-size: 19px;
+    font-weight:100;
+}
+.qlinks .ql li{
+    list-style-type: none;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 5px 0;
+}
+.ql a{
+    text-decoration: none;
+    color: #000000;
+}
+.con{
+    padding: 51px 0;
+    font-size: 19px;
+    font-style: italic;
+}
+.con a{
+    text-decoration: none;
+    color: #000000;
+}
+@media screen and (min-width: 1300px) {
+    .hlinks li{
+        font-size: 20px;
+    }
+    .but{
+        font-size: 20px;
+    }
+
+}
+/* Your existing CSS code here */
+
+    /*.navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #141414;
+        color: #fff;
+        width: 50vw;
+      }
+      
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+      
+      .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 3px 0;
+      }
+      
+      .hlinks {
+        list-style-type: none;
+        display: flex;
+        gap: 20px;
+      }
+      
+      .hlinks li a {
+        text-decoration: none;
+        color: #fff;
+      }
+      
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+      
+        .hlinks{
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          position: absolute;
+          background-color: #333;
+          width: 100%;
+          top: 60px;
+          left: 0;
+          padding: 20px 0;
+          transition: transform 0.3s ease-in-out;
+          transform: translateY(-100%);
+        }
+      
+        .hlinks.active {
+          transform: translateY(0);
+        }
+        
+      }
+
+/* Adjustments for mobile devices */
+/*@media screen and (max-width: 480px) {
+    .header {
+      height: auto;
+      padding: 15px 0;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .year {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    .year h1, .year span {
+      font-size: 18px;
+    }
+  
+    .hlinks {
+      width: 100%;
+      padding: 0;
+      justify-content: center;
+    }
+  
+    .hlinks li {
+      font-size: 14px;
+    }
+  
+    .but {
+      font-size: 14px;
+      width: auto;
+      padding: 5px 15px;
+    }
+  
+    .blank {
+      height: 300px;
+    }
+  
+    .footer {
+      flex-direction: column;
+      padding: 20px;
+      height: auto;
+    }
+  
+    .qlinks {
+      margin-top: 10px;
+      text-align: center;
+    }
+  
+    .qlinks label {
+      font-size: 16px;
+    }
+  
+    .qlinks .ql li {
+      font-size: 18px;
+      padding: 5px 0;
+    }
+  
+    .con {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+  
+    .apps img {
+      margin: 0 10px;
+    }
+  }
+   */
