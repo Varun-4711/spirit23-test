@@ -270,7 +270,7 @@
     padding-right: 20px;
   }
 }
-@media (max-width:420px) {
+/* @media (max-width:420px) {
   .footer{
     height: 400px;
   }
@@ -311,7 +311,7 @@
     margin-top: 0;
     list-style-type: none;
   }
-}
+} */
 
  /* RAHUL */
 * {
@@ -1212,5 +1212,48 @@ body {
   .chess {
     width: 80vw;
     height: 100%;
+  }
+}
+
+@media (max-width:420px) {
+  .footer{
+    height: 400px;
+  }
+  #foot_1{
+    display: contents;
+    height: 170px;
+    justify-content: space-between;
+    line-height: 20px;
+  }
+  .apps{
+    margin-left: -14px;
+  }
+  .qlinks{
+    padding-bottom: 0;
+  }
+  .frame_spir {
+    width: 170px;
+  }
+  .Copyright {
+    padding-right: 30px;
+    font-size: 9.75px;
+  }
+  .apps img{
+    height: 16px;
+  }
+  .qlinks h1 {
+    font-size: 20px;
+    padding-right: 20px;
+  }
+  .qlinks li{
+    font-size: 12px;
+  }
+  .con{
+    font-size: 10px;
+  }
+
+  .contactlist{
+    margin-top: 0;
+    list-style-type: none;
   }
 }
