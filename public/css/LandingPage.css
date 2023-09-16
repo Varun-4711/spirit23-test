@@ -306,6 +306,11 @@
   .con{
     font-size: 10px;
   }
+
+  .contactlist{
+    margin-top: 0;
+    list-style-type: none;
+  }
 }
 
  /* RAHUL */
