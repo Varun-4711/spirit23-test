@@ -609,7 +609,7 @@ body {
   width: 100%; /* Make sure the image fills the card */
   height: 90%; /* Make sure the image fills the card */
   object-fit: cover; /* Cut off any excess and maintain aspect ratio */
-  box-shadow: 10px 10px 10px grey;
+  /* box-shadow: 10px 10px 10px grey; */
 }
 
 .events {
