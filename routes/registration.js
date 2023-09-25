@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -7,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const passport=require('passport');
 
 const jwtSecret = process.env.JWT_SECRET;
-const passportSetup=require('../GoogleOauth/config/passport');
+
 // check login middleware
 
 const awtMiddleware = (req,res,next)=>{
@@ -37,6 +38,77 @@ const transporter = nodemailer.createTransport({
     pass: 'eyhhcbnlbqwtplqw',
   },
 });
+
+//
+
+const token = jwt.sign({
+  data: 'Token Data',
+}, 'ourSecretKey', { expiresIn: '10m' });
+
+function verifymail(email){
+  const mailConfigurations = {
+  
+    // It should be a string of sender/server email
+    from: 'mrtwinklesharma@gmail.com',
+  
+    to: email,
+  
+    // Subject of Email
+    subject: 'Email Verification',
+      
+    // This would be the text of email body
+    text: `Hi! There, You have recently visited 
+           our website and entered your email.
+           Please follow the given link to verify your email
+           http://localhost:3000/verify/${token} 
+           Thanks`
+      
+  };
+  
+  transporter.sendMail(mailConfigurations, function(error, info){
+    if (error) throw Error(error);
+    console.log('Email Sent Successfully');
+    console.log(info);
+  });
+}
+var verified = false;
+router.get('/verify/:token', (req, res)=>{
+  const {token} = req.params;
+
+  // Verifying the JWT token 
+ 
+  jwt.verify(token, 'ourSecretKey', function(err, decoded) {
+      if (err) {
+          console.log(err);
+          res.send("Email verification failed,possibly the link is invalid or expired"); 
+                  
+      }
+      else {
+          res.send("Email verifified successfully");
+          verified=true;
+      }
+  });
+});
+
+
+function verifymail(token) {
+  // Verify the JWT token using the same secret key and logic as in your route
+  try {
+      jwt.verify(token, 'ourSecretKey', function(err, decoded) {
+          if (err) {
+              console.log(err);
+              return false; // Token verification failed
+          } else {
+              // Token verification succeeded
+              return true; // Email is verified
+          }
+      });
+  } catch (error) {
+      console.error(error);
+      return false; // An exception occurred during verification
+  }
+}
+//
 
 function sendRegistrationEmail(email,pass) {
   // Define email content
@@ -74,26 +146,52 @@ router.get('/register', (req,res) =>{
  * User - Register
 */
 router.post('/register', async (req, res) => {
-    try {
-      const { email, password } = req.body;
+    // try {
+    //   const { email, password } = req.body;
+    //   console.log(password)
+    //   const hashedPassword = await bcrypt.hash(password, 10);
+  
+    //   try {
+    //     const user = await User.create({ email:email, password:hashedPassword });
+    //     sendRegistrationEmail(email,password);
+    //     // res.status(201).json({ message: 'User Created', user });
+    //     res.redirect('/login');
+    //   } catch (error) {
+    //     // if(error.code === 11000) {
+    //     //   res.status(409).json({ message: 'User already in use'});
+    //     // }
+    //     // res.status(500).json({ message: 'Internal server error'})
+    //     console.log(error);
+    //   }
+  
+    // } catch (error) {
+    //   console.log(error);
+    // }
+
+    const { email, password } = req.body;
+    console.log(req.body);
       console.log(password)
       const hashedPassword = await bcrypt.hash(password, 10);
-  
-      try {
-        const user = await User.create({ email, password:hashedPassword });
-        sendRegistrationEmail(email,password);
-        // res.status(201).json({ message: 'User Created', user });
+
+      const alreadyUser = await User.findOne({email:email});
+      console.log(alreadyUser);
+      if(alreadyUser){
+        console.log("user already exists");
         res.redirect('/login');
-      } catch (error) {
-        if(error.code === 11000) {
-          res.status(409).json({ message: 'User already in use'});
-        }
-        res.status(500).json({ message: 'Internal server error'})
+      }else{
+        console.log("check 1")
+        // verifymail(email);
+        const user = new User ({ email:email, password:hashedPassword });
+        await user.save();
+        res.redirect('/login');
+        // if(verified){
+        // }else{
+        //   res.json({message:'session expired'});
+        // }
+        
       }
-  
-    } catch (error) {
-      console.log(error);
-    }
+
+      
   });
 
 
@@ -117,8 +215,8 @@ router.post('/login', async (req, res) => {
     try {
         const { email,password } = req.body;
         
-        const user = await User.findOne({ email });
-        
+        const user = await User.findOne({ email:email });
+        console.log(user);
         if(!user){
             res.status(401).json({ message: 'Invalid Credential'});
         }
@@ -136,6 +234,11 @@ router.post('/login', async (req, res) => {
     }
   
   });
+
+
+const passportSetup=require('../GoogleOauth/config/passport');
+
+
   router.get('/auth/google',
   passport.authenticate('google', { scope: ['profile','email'] }));
 
@@ -152,22 +255,120 @@ router.get('/auth/google/redirect',passport.authenticate('google'),(req, res)=>{
   router.get('/dashboard',awtMiddleware,(req,res)=>{
     res.render('registration/registration_index')
   })
-  router.post('/dashboard',awtMiddleware,async(req,res)=>{
-        // var sports = req.body.sports;
-        // var university = req.body.university;
-        // var gender = req.body.gender;
-        // var par = req.body.participantname;
-        const {sports,captainname,captainemail,primarycontactno,secondarycontactno,university,gender,emailname,participantname} = req.body;
-        try {
-          const sport = await Sport.create({ sports,captainname,captainemail,primarycontactno,secondarycontactno,university,gender,emailname,participantname });
-        } catch (error) {
-          console.log(error);
-        }
-        console.log(req.body);
-        res.json({message: 'Resigtered Sussessfullu'})
+  // router.post('/dashboard',awtMiddleware,async(req,res)=>{
+    
+  //       const {sports,captainname,captainemail,primarycontactno,secondarycontactno,university,gender,emailname,participantname} = req.body;
+  //       try {
+  //         const sportreg = await Sport.create({ sport:sports,captainname,captainemail,primarycontact:primarycontactno,secondarycontact:secondarycontactno,university,gender});
+  //         res.redirect('/success');
+  //       } catch (error) {
+  //         console.log("error");
+  //         console.log(error);
+  //       }
+  //       console.log(req.body);
+  //       res.json({message: 'Resigtered Sussessfullu'})
+  // })
+
+  // router.post('/dashboard', awtMiddleware, async (req, res) => {
+  //   const {
+  //     sports,
+  //     captainname,
+  //     captainemail,
+  //     primarycontactno,
+  //     secondarycontactno,
+  //     university,
+  //     gender,
+  //     emailname,
+  //     participantname,
+  //   } = req.body;
+  
+  //   try {
+  //     // Create a new Sport document with participants
+  //     const sportreg = await Sport.create({
+  //       sport: sports,
+  //       captainname: captainname,
+  //       captainemail: captainemail,
+  //       primarycontact: primarycontactno,
+  //       secondarycontact: secondarycontactno,
+  //       university: university,
+  //       gender: gender,
+  //       participants: emailname.map((email, index) => ({
+  //         name: participantname[index],
+  //         email: email,
+  //       })),
+  //     });
+      
+  //     // Redirect to a success page or respond with success message
+  //     res.redirect('/success');
+  //   } catch (error) {
+  //     console.log('error');
+  //     console.error(error);
+  //     // Handle the error and possibly send an error response
+  //     res.status(500).json({ message: 'Internal Server Error' });
+  //   }
+  
+  //   console.log(req.body);
+  //   // You should move this response to a suitable place in your try block
+  //   // res.json({ message: 'Registered Successfully' });
+  // });
+
+  router.post('/dashboard', awtMiddleware, async (req, res) => {
+    const {
+      sports,
+      captainname,
+      captainemail,
+      primarycontactno,
+      secondarycontactno,
+      university,
+      gender,
+      emailname,
+      participantname,
+    } = req.body;
+  
+    try {
+      if (!Array.isArray(emailname) || !Array.isArray(participantname)) {
+        return res.status(400).json({ message: 'Invalid data format' });
+      }
+  
+      // Check for duplicate emails in emailname array
+      const emailSet = new Set(emailname);
+      if (emailSet.size !== emailname.length) {
+        return res.status(400).json({ message: 'Duplicate emails found' });
+      }
+  
+      // Check for null or empty emails
+      if (emailname.some(email => !email || email.trim() === '')) {
+        return res.status(400).json({ message: 'Emails cannot be null or empty' });
+      }
+  
+      // Create a new Sport document with participants
+      const sportreg = await Sport.create({
+        sport: sports,
+        captainname: captainname,
+        captainemail: captainemail,
+        primarycontact: primarycontactno,
+        secondarycontact: secondarycontactno,
+        university: university,
+        gender: gender,
+        participants: emailname.map((email, index) => ({
+          name: participantname[index],
+          email: email,
+        })),
+      });
+  
+      res.redirect('/success');
+    } catch (error) {
+      console.log('error');
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+  
+  
+
+  router.get("/success",(req,res)=>{
+    res.render("success")
   })
-
-
   router.get('/logout', (req,res)=>{
     res.clearCookie('token');
     //res.json({message: 'Logout successfully...'})
