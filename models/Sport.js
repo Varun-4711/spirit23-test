@@ -1,47 +1,57 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const SportSchema = new Schema({
-    email: {
-        type: String,
-        required: true,
-        unique: true
+const participantSchema = new Schema({
+    name: {
+      type: String,
+      required: false,
+      unique:false,
     },
+    email: {
+      type: String,
+      required: false,
+      unique: false,
+      index:true, unique:false,sparse:true, // Ensure unique emails for participants
+    },
+  });
+
+const SportSchema = new Schema({
+ 
     sport: {
         type: String,
         required: true,
-        unique: false
+        unique: false,
     },
     captainname: {
         type: String,
         required: true,
-        unique: false
+        unique: false,
+        
     },
     captainemail: {
         type: String,
         required: true,
-        unique: false
+        unique: false,
+        index:true, unique:false,sparse:true,
     },
     primarycontact: {
         type: Number,
         required: true,
-        unique: false
     },
     secondarycontact: {
         type: Number,
         required: true,
-        unique: false
     },
     university: {
         type: String,
         required: true,
-        unique: false
     },
     gender: {
         type: String,
         required: true,
-        unique: false
-    }
-});
+        unique: false,
+    },
+    participants: [participantSchema],
+},{timestamps: true,});
 
 module.exports = mongoose.model('Sport',SportSchema);
