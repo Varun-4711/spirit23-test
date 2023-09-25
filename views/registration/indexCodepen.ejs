@@ -18,7 +18,7 @@
   border-radius: 2px;
   position: relative;
   top: 242px;
-  left: 42px;
+  left: 79px;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
   .google-icon-wrapper {
     position: absolute;
@@ -32,7 +32,7 @@
   .google-icon {
     position: absolute;
     margin-top: 11px;
-    margin-left: -7px;
+    margin-left: 10px;
     width: 18px;
     height: 18px;
   }
@@ -137,6 +137,10 @@
     width: 8vw;
     box-shadow: 10px 10px 10px grey;
 }
+.goolge{
+  display: flex;
+  margin-top: -20vw;
+}
 body {
  
   font-family: "Roboto", sans-serif;
@@ -160,6 +164,16 @@ body {
             <button>create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
           </form>
+          
+          <form class="login-form" action="/login" method="POST">
+            <input type="email" name="email" placeholder="email address"/>
+            <input type="password" name="password" placeholder="password"/>
+            <button>login</button>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+          </form>
+          
+        </div>
+        <div class="goolge">
           <a href="/auth/google">
             <div class="google-btn">
               <div class="google-icon-wrapper">
@@ -168,12 +182,6 @@ body {
               <p class="btn-text"><b>Sign in with google</b></p>
             </div>
           </a>
-          <form class="login-form" action="/login" method="POST">
-            <input type="email" name="email" placeholder="email address"/>
-            <input type="password" name="password" placeholder="password"/>
-            <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
-          </form>
         </div>
       </div>
       <script>
