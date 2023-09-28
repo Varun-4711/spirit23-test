@@ -46,7 +46,7 @@ const customersValueElement = document.getElementById("customersValue");
 const audienceTarget = 30;
 const sponsorsTarget = 4000;
 const footfallTarget = 100;
-const customersTarget = 40;
+const customersTarget = 50;
 
 function isVisible(element) {
   const rect = element.getBoundingClientRect();
