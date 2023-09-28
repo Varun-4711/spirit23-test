@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&display=swap');
 /*prem*/
 * {
   margin: 0;
@@ -460,6 +460,7 @@
   height: 12.5vw;
   padding: 0px 5vw;
 }
+
 .stat-value {
   font-size: 5vw;
   /* font-family: FontspringVanguard-bold; */
