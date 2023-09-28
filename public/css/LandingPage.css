@@ -1225,7 +1225,7 @@ body {
 
 @media (max-width:420px) {
   .footer{
-    height: 400px;
+    height: 500px;
   }
   #foot_1{
     display: contents;
