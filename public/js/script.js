@@ -84,9 +84,8 @@ function startAnimation() {
 
 
 async function sports() {
-  const apikey = "e5a6e05216a74477b5ea26e1c01864ce";
-  const apiUrl =
-    "https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=";
+  const apikey ="e5a6e05216a74477b5ea26e1c01864ce";
+  const apiUrl ="https://newsapi.org/v2/top-headlines?country=in&category=sports&apiKey=";
   const response = await fetch(apiUrl + `${apikey}`);
   var data = await response.json();
   console.log(data);
