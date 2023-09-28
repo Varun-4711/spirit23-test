@@ -230,6 +230,13 @@
   .year{
     width: 60vw;
   }
+  #sp-logo-lpage{
+    width: 10vw;
+    margin-bottom: 3px;
+  }
+  #sp-text-lpage{
+  width: 35vw;
+  }
 }
 @media (max-width:670px) {
   .footer{
