@@ -218,12 +218,14 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({ email:email });
         console.log(user);
         if(!user){
-            res.status(401).json({ message: 'Invalid Credential'});
+            // res.status(401).json({ message: 'Invalid Credential'});
+            res.redirect('/login');
         }
         const isPassword = await bcrypt.compare(password,user.password);
         
         if(!isPassword){
-            res.status(401).json({ message: 'Invalid Credential'});
+            // res.status(401).json({ message: 'Invalid Credential'});
+            res.redirect('/login');
         }
 
         const token = jwt.sign({ userId: user._id },jwtSecret)
@@ -234,7 +236,6 @@ router.post('/login', async (req, res) => {
     }
   
   });
-
 
 const passportSetup=require('../GoogleOauth/config/passport');
 
