@@ -634,7 +634,7 @@ body {
 .events_top {
   display: flex;
   text-align: center;
-  padding-bottom: 6vw;
+  padding-bottom: 5vw;
 }
 .events_top div {
   font-family: AppleGaramound-bold-italic;
