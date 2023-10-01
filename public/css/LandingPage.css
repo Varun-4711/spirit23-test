@@ -231,7 +231,8 @@
     width: 60vw;
   }
   #sp-logo-lpage{
-    width: 10vw;
+    margin-left: 15px;
+    width: 24%;
     margin-bottom: 3px;
   }
   #sp-text-lpage{
