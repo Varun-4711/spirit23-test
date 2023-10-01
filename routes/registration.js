@@ -313,7 +313,60 @@ router.get('/auth/google/redirect',passport.authenticate('google'),(req, res)=>{
   //   // res.json({ message: 'Registered Successfully' });
   // });
 
-  router.post('/dashboard', awtMiddleware, async (req, res) => {
+  // router.post('/dashboard', awtMiddleware, async (req, res) => {
+  //   const {
+  //     sports,
+  //     captainname,
+  //     captainemail,
+  //     primarycontactno,
+  //     secondarycontactno,
+  //     university,
+  //     gender,
+  //     emailname,
+  //     participantname,
+  //   } = req.body;
+  
+  //   try {
+  //     if (!Array.isArray(emailname) || !Array.isArray(participantname)) {
+  //       return res.status(400).json({ message: 'Invalid data format' });
+  //     }
+  
+  //     // Check for duplicate emails in emailname array
+  //     const emailSet = new Set(emailname);
+  //     if (emailSet.size !== emailname.length) {
+  //       return res.status(400).json({ message: 'Duplicate emails found' });
+  //     }
+  
+  //     // Check for null or empty emails
+  //     if (emailname.some(email => !email || email.trim() === '')) {
+  //       return res.status(400).json({ message: 'Emails cannot be null or empty' });
+  //     }
+  
+  //     // Create a new Sport document with participants
+  //     const sportreg = await Sport.create({
+  //       sport: sports,
+  //       captainname: captainname,
+  //       captainemail: captainemail,
+  //       primarycontact: primarycontactno,
+  //       secondarycontact: secondarycontactno,
+  //       university: university,
+  //       gender: gender,
+  //       participants: emailname.map((email, index) => ({
+  //         name: participantname[index],
+  //         email: email,
+  //       })),
+  //     });
+  
+  //     res.redirect('/success');
+  //   } catch (error) {
+  //     console.log('error');
+  //     console.error(error);
+  //     res.status(500).json({ message: 'Internal Server Error' });
+  //   }
+  // });
+
+// new dashborard
+router.post('/dashboard', awtMiddleware, async (req, res) => {
     const {
       sports,
       captainname,
@@ -325,25 +378,15 @@ router.get('/auth/google/redirect',passport.authenticate('google'),(req, res)=>{
       emailname,
       participantname,
     } = req.body;
-  
+    console.log(participantname);
+    console.log(Array.isArray(participantname));
     try {
-      if (!Array.isArray(emailname) || !Array.isArray(participantname)) {
-        return res.status(400).json({ message: 'Invalid data format' });
-      }
+      // Check if emailname and participantname are provided
+      const emailnameProvided = Array.isArray(emailname) && emailname.length > 0;
+      const participantnameProvided = Array.isArray(participantname) && participantname.length > 0;
   
-      // Check for duplicate emails in emailname array
-      const emailSet = new Set(emailname);
-      if (emailSet.size !== emailname.length) {
-        return res.status(400).json({ message: 'Duplicate emails found' });
-      }
-  
-      // Check for null or empty emails
-      if (emailname.some(email => !email || email.trim() === '')) {
-        return res.status(400).json({ message: 'Emails cannot be null or empty' });
-      }
-  
-      // Create a new Sport document with participants
-      const sportreg = await Sport.create({
+      // Create a new Sport document with participants if emailname or participantname is provided
+      const sportData = {
         sport: sports,
         captainname: captainname,
         captainemail: captainemail,
@@ -351,15 +394,24 @@ router.get('/auth/google/redirect',passport.authenticate('google'),(req, res)=>{
         secondarycontact: secondarycontactno,
         university: university,
         gender: gender,
-        participants: emailname.map((email, index) => ({
-          name: participantname[index],
-          email: email,
-        })),
-      });
+      };
+  
+      if (emailnameProvided || participantnameProvided) {
+        sportData.participants = (emailname || []).map((email, index) => ({
+          name: (participantname || [])[index] || 'NA',
+          email: email || 'NA',
+        }));
+      } else {
+        sportData.participants = [{
+          name: participantname || 'NA',
+          email: emailname || 'NA',
+        }];
+      }
+  
+      const sportreg = await Sport.create(sportData);
   
       res.redirect('/success');
     } catch (error) {
-      console.log('error');
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
     }
