@@ -179,22 +179,46 @@ cursor: pointer;
     align-items: center;
     padding-right: 36px;
   }
+  .logout-sp{
+    position: absolute;
+    right: -45vw;
+    top: 2vw;
+    background-color: black;
+    padding: 10px;
+    color: hsl(79, 100%, 71%);
+  }
+
+  .ins1{
+    position: relative;
+    right: 63px;
+    color: red;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .ins2{
+    position: relative;
+    right: 66px;
+    color: red;
+    font-weight: bold;
+    font-size: 1rem;
+  }
 }
 
 </style>
 <body>
     <div class="logo_logout">
         <img src="images\spirit.jpeg" class="spiritlogo123"  alt="">
-        <a href="/logout" style="position: absolute;right: 2vw;top: 2vw;background-color: black;padding: 10px;color: hsl(79, 100%, 71%);">Logout</a>
+        <a href="/logout" style="position: absolute;right: 2vw;top: 2vw;background-color: black;padding: 10px;color: hsl(79, 100%, 71%);" id="logout-sp">Logout</a>
     </div>
     <br>
     <br>
     <div class="hemlo">
         <h1><br></h1>
     <p style="font-weight: bold;font-size: 1.1rem;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Choose a sport and enter the details of team members</p>
-    <small style="color: red;font-weight: bold;font-size: 1rem;">* Please refer to rulebook before registration</small>
-    <small style="color: red;font-weight: bold;font-size: 1rem;">* Registration deadline : 20th Oct 2023 EOD</small>
-    <small style="color: red;font-weight: bold;font-size: 1rem;">* Submit button appears when min players requirement is met  </small>
+    <small id="ins1" style="color: red;font-weight: bold;font-size: 1rem;">* Please refer to rulebook before registration</small>
+    <small id="ins2" style="color: red;font-weight: bold;font-size: 1rem;">* Registration deadline : 20th Oct 2023 EOD</small>
+    <small id="ins3" style="color: red;font-weight: bold;font-size: 1rem;">* Submit button appears when min players requirement is met  </small>
     <form action="/dashboard" method="POST">
     <div class="green-thing">
         <label for="myDropdown">Name of Sport*</label>
