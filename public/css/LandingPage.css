@@ -93,7 +93,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   font-style: italic;
-  padding-bottom: 22px;
+  padding-bottom: 70px;
 }
 .qlinks label {
   font-size: 19px;
@@ -101,9 +101,9 @@
 }
 .qlinks .ql li {
   list-style-type: none;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
-  padding: 5px 0;
+  padding: 4px 0;
 }
 .ql a {
   text-decoration: none;
