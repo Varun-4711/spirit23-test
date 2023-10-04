@@ -936,6 +936,7 @@ header {
 }
 @media only screen and (max-width: 600px) {
   .insert_top {
+    overflow: hidden;
     display: flex;
     height: 50vw;
     width: 80vw;
