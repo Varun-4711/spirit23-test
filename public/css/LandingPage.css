@@ -1107,6 +1107,8 @@ body {
 .sponsor_img {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .sponsor_img img {
