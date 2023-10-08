@@ -424,7 +424,7 @@ router.post('/registerMobile', async (req, res) => {
 
       const alreadyUser = await User.findOne({email:email});
       if(alreadyUser){
-        res.send({'error': 'Email exists, trying signing in.'});
+        res.send({'error': 'Email exists, try signing in.'});
       }else{
         const user = new User ({ email:email, password:hashedPassword, name:name, phone:phone });
         await user.save();
