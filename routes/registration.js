@@ -379,13 +379,28 @@ router.post('/userDetails', async (req, res) => {
     return;
   }
 
-  const { email } = req.body;
-  const user = await User.findOne({ email:email });
-  if (user) {
-    res.send({'email': user.email, 'phone': user.phone, 'name': user.name});
-  } else {
-    res.send({'email': user.email});
+  if (!req.body.hasOwnProperty("password")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
   }
+
+  const { email, password } = req.body;
+  const user = await User.findOne({ email:email });
+
+        console.log(user);
+        if(!user){
+            res.send({'error': 'Email not found.'});
+            return;
+        }
+
+        const isPassword = await bcrypt.compare(password,user.password);
+        
+        if(!isPassword){
+            // res.status(401).json({ message: 'Invalid Credential'});
+            res.send({'error': 'Incorrect password.'});
+            return;
+        }
+        res.send({'email': user.email, 'phone': user.phone, 'name': user.name});
 });
 
 // new dashborard
