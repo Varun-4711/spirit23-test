@@ -1,7 +1,6 @@
 const dropdown = document.getElementById("myDropdown");
-
 let selectedIndex = -1; // No option selected initially
-var gender = -1;
+var gender = 1;
 dropdown.addEventListener("change", function () {
   selectedIndex = dropdown.selectedIndex;
   
@@ -13,7 +12,7 @@ dropdown.addEventListener("change", function () {
   console.log("Selected index:", selectedIndex);
   console.log("Selected value:", selectedValue);
   console.log("Selected text:", selectedText);
-  // registrationLogic();
+  registrationLogic();
 });
 const maleRadio = document.getElementById("maleRadio");
   const femaleRadio = document.getElementById("femaleRadio");

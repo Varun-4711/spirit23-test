@@ -1,5 +1,6 @@
 const passport=require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
+const User = require('../../models/User');
 // var GoogleStrategy = require('passport-google-oauth').Strategy;
 const Guser=require('../../models/GoogleUser');
 passport.serializeUser((user,done)=>{
@@ -16,7 +17,7 @@ passport.use(new GoogleStrategy({
     callbackURL: "/auth/google/redirect"
   },
   (accessToken, refreshToken, profile, done)=>{
-    Guser.findOne({googleid:profile.id}).then((currentUser)=>{
+    Guser.findOne({googleid:profile.id}).then(async (currentUser)=>{
       if(currentUser)
       {
         //exists
@@ -25,6 +26,13 @@ passport.use(new GoogleStrategy({
       }
       else
       {
+        const alreadyUser = await User.findOne({email:profile.emails[0].value});
+        if (alreadyUser) {
+
+        } else {
+          const user = new User ({ email:profile.emails[0].value, password:"-", name:profile.displayName, phone:"-" });
+          await user.save();
+        }
         new Guser({
           username:profile.displayName,
           googleid:profile.id

@@ -374,6 +374,35 @@ router.get('/auth/google/redirect',passport.authenticate('google'),(req, res)=>{
 
 // new dashborard
 router.post('/dashboard', awtMiddleware, async (req, res) => {
+  if (!req.body.hasOwnProperty("sports")) {
+    res.send({'Error': 'Incomplete information (sports)'});
+    return;
+  }
+  if (!req.body.hasOwnProperty("captainname")) {
+    res.send({'Error': 'Incomplete information (captainname)'});
+    return;
+  }
+  if (!req.body.hasOwnProperty("captainemail")) {
+    res.send({'Error': 'Incomplete information (captainemail)'});
+    return;
+  }
+  if (!req.body.hasOwnProperty("primarycontactno")) {
+    res.send({'Error': 'Incomplete information (primarycontactno)'});
+    return;
+  }
+  if (!req.body.hasOwnProperty("secondarycontactno")) {
+    res.send({'Error': 'Incomplete information (secondarycontactno)'});
+    return;
+  }
+  if (!req.body.hasOwnProperty("university")) {
+    res.send({'Error': 'Incomplete information (university)'});
+    return;
+  }
+  if (!req.body.hasOwnProperty("gender")) {
+    res.send({'Error': 'Incomplete information (gender)'});
+    return;
+  }
+
     const {
       sports,
       captainname,
