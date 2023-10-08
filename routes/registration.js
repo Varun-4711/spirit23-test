@@ -432,6 +432,33 @@ router.post('/registerMobile', async (req, res) => {
       }
 });
 
+router.post('/registeredEvents', async (req, res) => {
+  if (!req.body.hasOwnProperty("email")) {
+    res.send({'Error': 'Incomplete information (email)'});
+    return;
+  }
+
+  var { email } = req.body;
+  email = email.toLocaleLowerCase();
+  var myevents = [];
+
+  for await (const doc of Sport.find()) {
+    if (doc.captainemail.toLocaleLowerCase() === email) {
+      myevents.push(doc.sport);
+    } else {
+      for (const participant of doc.participants) {
+        if (participant.email.toLocaleLowerCase() === email) {
+          myevents.push(doc.sport);
+          break;
+        }
+      }
+    }
+  }
+
+  var uniq = [...new Set(myevents)];
+  res.send({'events': uniq});
+});
+
 // new dashborard
 router.post('/dashboard', awtMiddleware, async (req, res) => {
   if (!req.body.hasOwnProperty("sports")) {
