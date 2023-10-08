@@ -169,8 +169,6 @@ router.post('/register', async (req, res) => {
     // }
 
     const { email, password, username, phone, confirmpassword } = req.body;
-    console.log(req.body);
-      console.log(password)
 
       if (password != confirmpassword) {
         console.log("password mismatch");
@@ -181,12 +179,9 @@ router.post('/register', async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const alreadyUser = await User.findOne({email:email});
-      console.log(alreadyUser);
       if(alreadyUser){
-        console.log("user already exists");
         res.send({'Error': 'User already exists.'});
       }else{
-        console.log("check 1")
         // verifymail(email);
         const user = new User ({ email:email, password:hashedPassword, name:username, phone:phone });
         await user.save();
@@ -387,7 +382,6 @@ router.post('/userDetails', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email:email });
 
-        console.log(user);
         if(!user){
             res.send({'error': 'Email not found.'});
             return;
@@ -401,6 +395,41 @@ router.post('/userDetails', async (req, res) => {
             return;
         }
         res.send({'email': user.email, 'phone': user.phone, 'name': user.name});
+});
+
+router.post('/registerMobile', async (req, res) => {
+  if (!req.body.hasOwnProperty("email")) {
+    res.send({'Error': 'Incomplete information (email)'});
+    return;
+  }
+
+  if (!req.body.hasOwnProperty("password")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
+  }
+
+  if (!req.body.hasOwnProperty("phone")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
+  }
+
+  if (!req.body.hasOwnProperty("name")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
+  }
+
+  const { email, password, phone, name } = req.body;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+      const alreadyUser = await User.findOne({email:email});
+      if(alreadyUser){
+        res.send({'error': 'Email exists, trying signing in.'});
+      }else{
+        const user = new User ({ email:email, password:hashedPassword, name:name, phone:phone });
+        await user.save();
+        res.send({'email': user.email, 'phone': user.phone, 'name': user.name}); 
+      }
 });
 
 // new dashborard
