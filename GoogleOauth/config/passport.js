@@ -26,13 +26,6 @@ passport.use(new GoogleStrategy({
       }
       else
       {
-        const alreadyUser = await User.findOne({email:profile.emails[0].value});
-        if (alreadyUser) {
-
-        } else {
-          const user = new User ({ email:profile.emails[0].value, password:"-", name:profile.displayName, phone:"-" });
-          await user.save();
-        }
         new Guser({
           username:profile.displayName,
           googleid:profile.id
