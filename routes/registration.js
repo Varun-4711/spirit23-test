@@ -168,20 +168,27 @@ router.post('/register', async (req, res) => {
     //   console.log(error);
     // }
 
-    const { email, password } = req.body;
+    const { email, password, username, phone, confirmpassword } = req.body;
     console.log(req.body);
       console.log(password)
+
+      if (password != confirmpassword) {
+        console.log("password mismatch");
+        res.send({'Error': 'Passwords don\'t match.'});
+        return;
+      }
+
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const alreadyUser = await User.findOne({email:email});
       console.log(alreadyUser);
       if(alreadyUser){
         console.log("user already exists");
-        res.redirect('/login');
+        res.send({'Error': 'User already exists.'});
       }else{
         console.log("check 1")
         // verifymail(email);
-        const user = new User ({ email:email, password:hashedPassword });
+        const user = new User ({ email:email, password:hashedPassword, name:username, phone:phone });
         await user.save();
         res.redirect('/login');
         // if(verified){

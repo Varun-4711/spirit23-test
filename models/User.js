@@ -10,6 +10,16 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: false
+    },
+    name: {
+        type: String,
+        required: true,
+        unique: false
+    },
+    phone: {
+        type: String,
+        required: true,
+        unique: false
     }
 });
 
