@@ -147,7 +147,15 @@ function registrationLogic() {
         submitEnable.style.display = "none";
       }
   }
-  else if(selectedIndex == 14||selectedIndex == 15||selectedIndex == 16||selectedIndex == 17||selectedIndex == 18)
+  else if(selectedIndex == 14)
+  {
+    if (countMembers <= 5) {
+      submitEnable.style.display = "block";
+    } else {
+      submitEnable.style.display = "none";
+    }
+  }
+  else if(selectedIndex == 15||selectedIndex == 16||selectedIndex == 17||selectedIndex == 18)
   {
     if (countMembers <= 2) {
         submitEnable.style.display = "block";
