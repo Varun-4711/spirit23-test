@@ -372,6 +372,22 @@ router.get('/auth/google/redirect',passport.authenticate('google'),(req, res)=>{
   //   }
   // });
 
+router.post('/userDetails', async (req, res) => {
+  console.log(req.body);
+  if (!req.body.hasOwnProperty("email")) {
+    res.send({'Error': 'Incomplete information (email)'});
+    return;
+  }
+
+  const { email } = req.body;
+  const user = await User.findOne({ email:email });
+  if (user) {
+    res.send({'email': user.email, 'phone': user.phone, 'name': user.name});
+  } else {
+    res.send({'email': user.email});
+  }
+});
+
 // new dashborard
 router.post('/dashboard', awtMiddleware, async (req, res) => {
   if (!req.body.hasOwnProperty("sports")) {
