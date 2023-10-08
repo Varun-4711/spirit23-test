@@ -100,7 +100,7 @@ const find2 = async (text) => {
         text = node.textContent;
         a.innerHTML = node.textContent;
 
-        const url = `../desktop15/desktop15.html`
+        const url = `/register`
         document.getElementById("register").setAttribute("href", url)
         document.getElementById("registerfe").setAttribute("href", url)
         text2 = text2.charAt(0).toUpperCase() + text2.slice(1);
