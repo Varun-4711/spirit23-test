@@ -140,22 +140,23 @@ function registrationLogic() {
   else if (selectedIndex == 11) {
       submitEnable.style.display = "block";
   }
-  else if (selectedIndex == 12||selectedIndex == 13) {
+  else if (selectedIndex == 12) {
     if (countMembers <= 4&&gender==1) {
         submitEnable.style.display = "block";
       } else {
         submitEnable.style.display = "none";
       }
   }
-  else if(selectedIndex == 14)
+  else if(selectedIndex == 13)
   {
-    if (countMembers <= 5) {
+    if (countMembers <= 5)
+    {
       submitEnable.style.display = "block";
     } else {
       submitEnable.style.display = "none";
     }
   }
-  else if(selectedIndex == 15||selectedIndex == 16||selectedIndex == 17||selectedIndex == 18)
+  else if(selectedIndex == 14||selectedIndex == 15||selectedIndex == 16||selectedIndex == 17||selectedIndex == 18)
   {
     if (countMembers <= 2) {
         submitEnable.style.display = "block";
