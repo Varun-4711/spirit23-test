@@ -169,8 +169,6 @@ router.post('/register', async (req, res) => {
     // }
 
     const { email, password, username, phone, confirmpassword } = req.body;
-    console.log(req.body);
-      console.log(password)
 
       if (password != confirmpassword) {
         console.log("password mismatch");
@@ -181,12 +179,9 @@ router.post('/register', async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const alreadyUser = await User.findOne({email:email});
-      console.log(alreadyUser);
       if(alreadyUser){
-        console.log("user already exists");
         res.send({'Error': 'User already exists.'});
       }else{
-        console.log("check 1")
         // verifymail(email);
         const user = new User ({ email:email, password:hashedPassword, name:username, phone:phone });
         await user.save();
@@ -379,13 +374,89 @@ router.post('/userDetails', async (req, res) => {
     return;
   }
 
-  const { email } = req.body;
-  const user = await User.findOne({ email:email });
-  if (user) {
-    res.send({'email': user.email, 'phone': user.phone, 'name': user.name});
-  } else {
-    res.send({'email': user.email});
+  if (!req.body.hasOwnProperty("password")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
   }
+
+  const { email, password } = req.body;
+  const user = await User.findOne({ email:email });
+
+        if(!user){
+            res.send({'error': 'Email not found.'});
+            return;
+        }
+
+        const isPassword = await bcrypt.compare(password,user.password);
+        
+        if(!isPassword){
+            // res.status(401).json({ message: 'Invalid Credential'});
+            res.send({'error': 'Incorrect password.'});
+            return;
+        }
+        res.send({'email': user.email, 'phone': user.phone, 'name': user.name});
+});
+
+router.post('/registerMobile', async (req, res) => {
+  if (!req.body.hasOwnProperty("email")) {
+    res.send({'Error': 'Incomplete information (email)'});
+    return;
+  }
+
+  if (!req.body.hasOwnProperty("password")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
+  }
+
+  if (!req.body.hasOwnProperty("phone")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
+  }
+
+  if (!req.body.hasOwnProperty("name")) {
+    res.send({'Error': 'Incomplete information (password)'});
+    return;
+  }
+
+  const { email, password, phone, name } = req.body;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+      const alreadyUser = await User.findOne({email:email});
+      if(alreadyUser){
+        res.send({'error': 'Email exists, try signing in.'});
+      }else{
+        const user = new User ({ email:email, password:hashedPassword, name:name, phone:phone });
+        await user.save();
+        res.send({'email': user.email, 'phone': user.phone, 'name': user.name}); 
+      }
+});
+
+router.post('/registeredEvents', async (req, res) => {
+  if (!req.body.hasOwnProperty("email")) {
+    res.send({'Error': 'Incomplete information (email)'});
+    return;
+  }
+
+  var { email } = req.body;
+  email = email.toLocaleLowerCase();
+  var myevents = [];
+
+  for await (const doc of Sport.find()) {
+    if (doc.captainemail.toLocaleLowerCase() === email) {
+      myevents.push(doc.sport);
+    } else {
+      for (const participant of doc.participants) {
+        if (participant.email.toLocaleLowerCase() === email) {
+          myevents.push(doc.sport);
+          break;
+        }
+      }
+    }
+  }
+
+  var uniq = [...new Set(myevents)];
+  res.send({'events': uniq});
 });
 
 // new dashborard
