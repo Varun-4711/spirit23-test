@@ -137,10 +137,10 @@ function registrationLogic() {
         submitEnable.style.display = "none";
       }
   }
-  else if (selectedIndex == 11) {
+  else if (selectedIndex == 11){
       submitEnable.style.display = "block";
   }
-  else if (selectedIndex == 12) {
+  else if (selectedIndex == 12){
     if (countMembers <= 4&&gender==1) {
         submitEnable.style.display = "block";
       } else {
