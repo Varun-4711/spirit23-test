@@ -21,6 +21,10 @@ router.get("/",(req,res)=>{
  router.get("/success",(req,res)=>{
    res.render("success")
  })
+
+ router.get("/privacy",(req,res)=>{
+  res.render("privacy")
+})
  //Attach registration page to the /register route
 //  router.get("/registerr",(req,res)=>{
 //      res.send("Hi, Idhar register page daaldo !");
