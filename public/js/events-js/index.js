@@ -130,7 +130,7 @@ const find2 = async (text) => {
         men_ranking[2].textContent = res[0].rank3;
         men_ranking[3].textContent = res[0].rank4;
 
-        if (res.length == 2) {
+        if (res.length == 2) {//random comment
             const women_ranking = document.getElementsByClassName("women_ranking");
             women_ranking[0].textContent = res[1].rank1;
             women_ranking[1].textContent = res[1].rank2;
