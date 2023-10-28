@@ -30,7 +30,7 @@
         <div class="scroll">
             <div class="menu-bar">
                 <div class="menu">
-                    <ul class="">
+                    <ul class="mb-5">
                         <li class="">
                             <a href="#cricket-section">
                                 <i class='bx bxs-cricket-ball icon'></i>
@@ -80,6 +80,12 @@
                             </a>
                         </li>
                         <li class=" ">
+                            <a href="#swimming-section">
+                                <i class="fa-solid fa-person-swimming icon"></i>
+                                <span class="text nav-text">Swimming</span>
+                            </a>
+                        </li>
+                        <li class=" ">
                             <a href="#table-tennis-section">
                                 <i class="fa-solid fa-table-tennis-paddle-ball icon"></i>
                                 <span class="text nav-text">Table Tennis</span>
@@ -113,12 +119,6 @@
                             <a href="#squash-section">
                                 <i class='bx bxs-cricket-ball icon'></i>
                                 <span class="text nav-text">Squash(tentative)</span>
-                            </a>
-                        </li>
-                        <li class=" ">
-                            <a href="#swimming-section">
-                                <i class="fa-solid fa-person-swimming icon"></i>
-                                <span class="text nav-text">Swimming</span>
                             </a>
                         </li>
                     </ul>
@@ -392,7 +392,7 @@
 
 
 <!-- Khokho-section  -->
-<section class="sport-section" id="khokho-section">
+<section class="sport-section" id="swimming-section">
     <h1 class="sport-section-heading text-center my-3">
         Khokho
     </h1>
@@ -429,6 +429,48 @@
                     </div>
                 </div>
                 <button class="mt-3" onclick="update_ranking('khokho','female','NA','NA');">Update</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sport-section" id="swimming-section">
+    <h1 class="sport-section-heading text-center my-3">
+        Swimming
+    </h1>
+    <div class="container">
+        <div class=" row gap-3 gap-lg-0">
+            <div class="men-section col-12 col-lg-6 bg-color py-4 rounded">
+                <h1 class="sport-section-heading text-center fw-lighter">Men</h1>
+                <div class="dropdowns gap-4">
+                    <div class="custom-dropdown">
+                        <label for="">Rank 1</label>
+                        <input type="text" id="swimming_male_NA_NA_rank1" name="Rank 1">
+                        <label for="">Rank 2</label>
+                        <input type="text" id="swimming_male_NA_NA_rank2"  name="Rank 2">
+                        <label for="">Rank 3</label>
+                        <input type="text" id="swimming_male_NA_NA_rank3"  name="Rank 3">
+                        <label for="">Rank 4</label>
+                        <input type="text" id="swimming_male_NA_NA_rank4"  name="Rank 4">
+                    </div>
+                </div>
+                <button class="mt-3" onclick="update_ranking('swimming','male','NA','NA');">Update</button>
+            </div>
+            <div class="men-section col-12 col-lg-6 bg-color py-4 rounded">
+                <h1 class="sport-section-heading text-center fw-lighter">Women</h1>
+                <div class="dropdowns gap-4">
+                    <div class="custom-dropdown">
+                        <label for="">Rank 1</label>
+                        <input type="text" id="swimming_female_NA_NA_rank1" name="Rank 1">
+                        <label for="">Rank 2</label>
+                        <input type="text" id="swimming_female_NA_NA_rank2" name="Rank 2">
+                        <label for="">Rank 3</label>
+                        <input type="text" id="swimming_female_NA_NA_rank3" name="Rank 3">
+                        <label for="">Rank 4</label>
+                        <input type="text" id="swimming_female_NA_NA_rank4" name="Rank 4">
+                    </div>
+                </div>
+                <button class="mt-3" onclick="update_ranking('swimming','female','NA','NA');">Update</button>
             </div>
         </div>
     </div>
