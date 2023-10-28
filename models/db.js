@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-require('dotenv').config();
-
-const mongoURL =process.env.DB_LINK;
+const mongoURL =`mongodb+srv://varunsaxenaiitg:KV2hUUlEv3tdM26v@cluster0.1tju1nl.mongodb.net/`;
 
 // const mongoURL =`mongodb+srv://rp8550495:vipZux-dogdo2-cyhxaz@cluster0.xk5bgmf.mongodb.net/?retryWrites=true&w=majority`;
 
