@@ -1,45 +1,45 @@
 var input, temp, temp2;
-window.onload = async() => {
+window.onload = async () => {
     localStorage.setItem("check", 1);
 
-      //updating score board
-      const text = 'basketball';
-      let sport = {
+    //updating score board
+    const text = 'basketball';
+    let sport = {
         name: text
     };
-      const card = document.getElementsByClassName('sportnameLEAD');
-      card[0].textContent = `${text}(Mens)`;
-      card[1].textContent = `${text}(Womens)`;
+    const card = document.getElementsByClassName('sportnameLEAD');
+    card[0].textContent = `${text}(Mens)`;
+    card[1].textContent = `${text}(Womens)`;
 
-      // get ranking data from database
+    // get ranking data from database
 
-      const response = await fetch(`/api/admin/get`, {
-          method: "POST",
-          headers: {
-              'content-type': 'application/json'
-          },
-          body: JSON.stringify(sport)
-      });
-      const res = await response.json();
-      const men_ranking = document.getElementsByClassName("men_ranking");
-        men_ranking[0].textContent = res[0].rank1;
-        men_ranking[1].textContent = res[0].rank2;
-        men_ranking[2].textContent = res[0].rank3;
-        men_ranking[3].textContent = res[0].rank4;
+    const response = await fetch(`/api/admin/get`, {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(sport)
+    });
+    const res = await response.json();
+    const men_ranking = document.getElementsByClassName("men_ranking");
+    men_ranking[0].textContent = res[0].rank1;
+    men_ranking[1].textContent = res[0].rank2;
+    men_ranking[2].textContent = res[0].rank3;
+    men_ranking[3].textContent = res[0].rank4;
 
-        if (res.length == 2) {
-            const women_ranking = document.getElementsByClassName("women_ranking");
-            women_ranking[0].textContent = res[1].rank1;
-            women_ranking[1].textContent = res[1].rank2;
-            women_ranking[2].textContent = res[1].rank3;
-            women_ranking[3].textContent = res[1].rank4;
-        }
-        else{
-            const element = document.getElementsByClassName("bars-women");
-            card[1].style.visibility = "hidden";
-            element[0].style.visibility = "hidden";
-            // console.log(element);
-        }
+    if (res.length == 2) {
+        const women_ranking = document.getElementsByClassName("women_ranking");
+        women_ranking[0].textContent = res[1].rank1;
+        women_ranking[1].textContent = res[1].rank2;
+        women_ranking[2].textContent = res[1].rank3;
+        women_ranking[3].textContent = res[1].rank4;
+    }
+    else {
+        const element = document.getElementsByClassName("bars-women");
+        card[1].style.visibility = "hidden";
+        element[0].style.visibility = "hidden";
+        // console.log(element);
+    }
 }
 if (window.screen.width > 1200) {
     input = document.getElementById("input");
@@ -125,24 +125,51 @@ const find2 = async (text) => {
         const res = await response.json();
         // console.log(res);
         const men_ranking = document.getElementsByClassName("men_ranking");
-        men_ranking[0].textContent = res[0].rank1;
-        men_ranking[1].textContent = res[0].rank2;
-        men_ranking[2].textContent = res[0].rank3;
-        men_ranking[3].textContent = res[0].rank4;
+        const women_ranking = document.getElementsByClassName("women_ranking");
 
+        let menRanking = {
+            rank1: "NA",
+            rank2: "NA",
+            rank3: "NA",
+            rank4: "NA",
+        };
+        let womenRanking = {
+            rank1: "NA",
+            rank2: "NA",
+            rank3: "NA",
+            rank4: "NA",
+        }
+        if (res.length == 1) {
+            if (res[0].gender == 'male') {
+                menRanking = res[0];
+               
+            }
+            else {
+                womenRanking = res[0];
+               
+            }
+        }
         if (res.length == 2) {//random comment
-            const women_ranking = document.getElementsByClassName("women_ranking");
-            women_ranking[0].textContent = res[1].rank1;
-            women_ranking[1].textContent = res[1].rank2;
-            women_ranking[2].textContent = res[1].rank3;
-            women_ranking[3].textContent = res[1].rank4;
+            if (res[0].gender == 'male') {
+                menRanking = res[0];
+                womenRanking=res[1];
+               
+            }
+            else {
+                womenRanking = res[0];
+               menRanking=res[1];
+            }
         }
-        else{
-            const element = document.getElementsByClassName("bars-women");
-            card[1].style.visibility = "hidden";
-            element[0].style.visibility = "hidden";
-            // console.log(element);
-        }
+
+        men_ranking[0].textContent = menRanking.rank1;
+        men_ranking[1].textContent = menRanking.rank2;
+        men_ranking[2].textContent = menRanking.rank3;
+        men_ranking[3].textContent = menRanking.rank4;
+        women_ranking[0].textContent = womenRanking.rank1;
+        women_ranking[1].textContent = womenRanking.rank2;
+        women_ranking[2].textContent = womenRanking.rank3;
+        women_ranking[3].textContent = womenRanking.rank4;
+
     }
 
 }
