@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerificate</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+    *{
+        font-family: "Poppins", sans-serif;
+        background: hsl(79, 100%, 71%);
+    }
+    .search{
+        display: flex;
+        justify-content: center;
+        padding: 1.5vw;
+        margin-top: 20%;
+    }
+    .search input{
+        padding: 0.7vw;
+        background-color: white;
+    }
+</style>
+<body>
+    <!-- views/search.ejs -->
+<!-- <form method="POST" class="search" action="/search">
+    <input type="text" name="searchQuery" placeholder="Enter your name">
+    <button type="submit">Search</button>
+</form> -->
+
+
+<!-- views/search.ejs -->
+<form action="/filter" class="search" method="get">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="university" placeholder="University">
+    <input type="text" name="sports" placeholder="Sports">
+    <button type="submit" style="background-color: black; color: white;">Apply Filters</button>
+</form>
+
+<script>
+    // Add this script in your HTML or link to an external script
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('keyup', performSearch);
+
+function performSearch() {
+    const searchValue = searchInput.value.toLowerCase();
+
+    // Filter participants based on the search value
+    const filteredParticipants = participants.filter(participant => {
+        return participant.name.toLowerCase().includes(searchValue);
+    });
+
+    // Update the table or display the filtered results
+    // You can use JavaScript to update the DOM with the filtered results
+}
+
+function updateTable(filteredParticipants) {
+    const table = document.getElementById('resultsTable');
+    // Clear the existing table content
+    table.innerHTML = '';
+
+    // Populate the table with the filtered data
+    filteredParticipants.forEach(participant => {
+        const row = table.insertRow();
+        const cell = row.insertCell(0);
+        cell.textContent = participant.name;
+        // Add more cells for other participant data (university, sports, etc.)
+    });
+}
+
+
+
+</script>
+</body>
+</html>

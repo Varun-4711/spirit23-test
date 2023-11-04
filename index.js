@@ -76,6 +76,7 @@ app.use('/',require('./routes/adminAuth'));
 app.use('/',require('./routes/registration'));
 app.use('/',require('./routes/main'));
 app.use('/',require('./routes/emailCert'));
+app.use('/',require('./routes/searchCert'));
 
 
 const PORT = 3000;

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: hsl(79, 100%, 71%);
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+            font-size: large;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: black;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: 100;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #007bff;
+        }
+
+        .certificate-not-available {
+            color: #f00;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <% participants.forEach(participant => { %>
+            <li>
+                <strong>Name:</strong> <%= participant.name %><br>
+                <strong>University:</strong> <%= participant.university %><br>
+                <strong>Sports:</strong> <%= participant.sports %><br>
+                <% if (participant.certificateDownloaded) { %>
+                    <a href="/download/<%= participant.name %>/<%= participant.university %>/<%= participant.sports %>">Download Certificate</a>
+                <% } else { %>
+                    <span class="certificate-not-available">Certificate not available</span>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
