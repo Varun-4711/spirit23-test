@@ -228,7 +228,7 @@ router.post('/generate-and-email-pdf', authenticate, async (req, res) => {
           res.status(500).send('Failed to send the email');
         } else {
           console.log('Email sent:', info.response);
-            res.redirect('/');
+            res.redirect('/index-email');
        
         }
       });
