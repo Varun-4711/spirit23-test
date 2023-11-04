@@ -39,14 +39,19 @@ app.use(function (req, res, next) {
 // session 
 const oneDay = 1000 * 60 * 60 * 24;
 
-app.use(
-  session({
-    secret: "afdhsfhsdk",
-    saveUninitialized: true,
-    cookie: { maxAge: oneDay },
-    resave: false,
-  })
-);
+// app.use(
+//   session({
+//     secret: "afdhsfhsdk",
+//     saveUninitialized: true,
+//     cookie: { maxAge: oneDay },
+//     resave: false,
+//   })
+// );
+app.use(session({
+  secret: process.env.SESSION_SECRET, // Use the environment variable for the session secret
+  resave: false,
+  saveUninitialized: true,
+}));
 
 app.get('/admin/login',(req,res)=>{   
     if(!req.session.login)
@@ -70,6 +75,7 @@ app.get('/admin/home',(req,res)=>{
 app.use('/',require('./routes/adminAuth'));
 app.use('/',require('./routes/registration'));
 app.use('/',require('./routes/main'));
+app.use('/',require('./routes/emailCert'));
 
 
 const PORT = 3000;
