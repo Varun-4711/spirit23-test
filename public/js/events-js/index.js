@@ -123,7 +123,7 @@ const find2 = async (text) => {
             body: JSON.stringify(sport)
         });
         const res = await response.json();
-        // console.log(res);
+        // console.log(res); 
         const men_ranking = document.getElementsByClassName("men_ranking");
         const women_ranking = document.getElementsByClassName("women_ranking");
 
