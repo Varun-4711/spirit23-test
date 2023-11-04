@@ -191,7 +191,7 @@ params.append('sport', sport);
 
 const url = `http://example.com/?${params.toString()}`;
 
-console.log(url);
+//console.log(url);
 
 
 
